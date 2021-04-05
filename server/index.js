@@ -13,11 +13,11 @@ app.use(express.json());
 
 massive({
   connectionString: CONNECTION_STRING,
-  ssl: { rejectUnathorized: false },
+  ssl: { rejectUnauthorized: false },
 }).then((db) => {
-  app.set("db", db);
-  app.listen(PORT, () => console.log(`Server on ${PORT}`));
-});
+    app.set("db", db);
+    app.listen(PORT, () => console.log(`Server on ${PORT}`));
+  }).catch((err) => console.log(err));
 
 app.use = session({
   resave: true,
